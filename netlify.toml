@@ -1,0 +1,20 @@
+# ── Netlify Configuration ──────────────────────────────────────────
+# Drop the entire `wedding-invitation/` folder into Netlify's UI
+# (netlify.com → "Add new site" → "Deploy manually"), or connect
+# your GitHub repo and set Publish directory to the folder name.
+
+[build]
+  publish = "."        # root of this folder is the site root
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options        = "SAMEORIGIN"
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy        = "strict-origin-when-cross-origin"
+
+# Pretty URLs — /index.html served at /
+[[redirects]]
+  from   = "/"
+  to     = "/index.html"
+  status = 200
