@@ -1040,7 +1040,7 @@ footer span {
 
 .ent-name {
     font-family: 'Cormorant Garamond', serif;
-    font-size: clamp(.1rem, 2vw, 1.2rem);
+    font-size: clamp(1rem, 3vw, 1.2rem);
     font-weight: 400;
     color: var(--navy);
     line-height: 1.7;
