@@ -53,72 +53,73 @@
     <span class="music-label">Press<br>to play</span>
   </button>
 
-    <!-- ═══════════════════════════════════════════
+  <!-- ═══════════════════════════════════════════
            LOCATION
       ════════════════════════════════════════════ -->
-    <section id="location" class="section">
-      <div class="container">
-    
-        <div class="reveal">
-          <span class="tag">Getting There</span>
-          <h2 class="section-title">Location</h2>
-          <div class="divider"></div>
-        </div>
-    
-        <div class="location-layout reveal">
-    
-          <!-- LEFT SIDE -->
-          <div class="location-info">
-    
-            <div class="location-row">
-              <p class="location-label">Date</p>
-              <div class="location-details">
-                <p class="location-value">August 08, 2026</p>
-                <span class="location-time">Saturday · 1:30 PM</span>
-              </div>
-            </div>
-    
-            <div class="location-row">
-              <p class="location-label">Holy Matrimony</p>
-              <div class="location-details">
-                <p class="location-title">Sto. Niño de Oro Parish</p>
-                <p class="location-address">
-                  Limketkai Drive, Cogon<br>
-                  Cagayan de Oro City
-                </p>
-              </div>
-            </div>
-    
-            <div class="location-row">
-              <p class="location-label">Reception</p>
-              <div class="location-details">
-                <p class="location-title">De Luxe Hotel</p>
-                <p class="location-address">
-                  Diamond Hall (4<sup>th</sup> floor)<br>
-                  Capt. Vicente Roa Street<br>
-                  Cagayan de Oro City
-                </p>
-              </div>
-            </div>
-    
-          </div>
-    
-          <!-- RIGHT SIDE -->
-          <div class="map-wrapper">
-            <iframe
-              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.201088617689!2d124.65435299999999!3d8.4798186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32fff2c5115ef3d5%3A0xa2a2fa6602eafbde!2sSto.%20Ni%C3%B1o%20Church!5e0!3m2!1sen!2sph!4v1778997366004!5m2!1sen!2sph"
-              allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
-            </iframe>
-            <div style="text-align:center; margin-top: 18px;">
-              <a href="https://maps.app.goo.gl/X7jt6gkcP8fhDU1n9" target="_blank" rel="noopener" class="map-directions-btn">
-                ↗ &nbsp;Open in Google Maps
-              </a>
-            </div>
-          </div>
-    
-        </div>
+  <section id="location" class="section">
+    <div class="container">
+
+      <div class="reveal">
+        <span class="tag">Getting There</span>
+        <h2 class="section-title">Location</h2>
+        <div class="divider"></div>
       </div>
-    </section>
+
+      <div class="location-layout reveal">
+
+        <!-- LEFT SIDE -->
+        <div class="location-info">
+
+          <div class="location-row">
+            <p class="location-label">Date</p>
+            <div class="location-details">
+              <p class="location-value">August 08, 2026</p>
+              <span class="location-time">Saturday · 1:30 PM</span>
+            </div>
+          </div>
+
+          <div class="location-row">
+            <p class="location-label">Holy Matrimony</p>
+            <div class="location-details">
+              <p class="location-title">Sto. Niño de Oro Parish</p>
+              <p class="location-address">
+                Limketkai Drive, Cogon<br>
+                Cagayan de Oro City
+              </p>
+            </div>
+          </div>
+
+          <div class="location-row">
+            <p class="location-label">Reception</p>
+            <div class="location-details">
+              <p class="location-title">De Luxe Hotel</p>
+              <p class="location-address">
+                Diamond Hall (4<sup>th</sup> floor)<br>
+                Capt. Vicente Roa Street<br>
+                Cagayan de Oro City
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- RIGHT SIDE -->
+        <div class="map-wrapper">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3946.201088617689!2d124.65435299999999!3d8.4798186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x32fff2c5115ef3d5%3A0xa2a2fa6602eafbde!2sSto.%20Ni%C3%B1o%20Church!5e0!3m2!1sen!2sph!4v1778997366004!5m2!1sen!2sph"
+            allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
+          <div style="text-align:center; margin-top: 18px;">
+            <a href="https://maps.app.goo.gl/X7jt6gkcP8fhDU1n9" target="_blank" rel="noopener"
+              class="map-directions-btn">
+              ↗ &nbsp;Open in Google Maps
+            </a>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
 
 
   <!-- ═══════════════════════════════════════════
@@ -455,19 +456,23 @@
       <div class="rsvp-card reveal">
         <form class="rsvp-form" id="rsvpForm" novalidate>
 
-          <div class="form-row">
-            <div class="form-group">
-              <label class="form-label" for="firstName">First Name</label>
-              <input class="form-input" type="text" id="firstName" name="firstName" placeholder="Maria" required />
+          <div class="form-group">
+            <label class="form-label" for="guestSearch">Find Your Name</label>
+            <div class="guest-search-wrap">
+              <input class="form-input" type="text" id="guestSearch" placeholder="Start typing your name…"
+                autocomplete="off" />
+              <div class="guest-results" id="guestResults"></div>
             </div>
-            <div class="form-group">
-              <label class="form-label" for="lastName">Last Name</label>
-              <input class="form-input" type="text" id="lastName" name="lastName" placeholder="Santos" required />
-            </div>
+            <p class="guest-hint" id="guestHint" style="display:none;"></p>
           </div>
 
-          <div class="form-group">
-            <label class="form-label">Attendance</label>
+          <div class="rsvp-selected" id="rsvpSelected" style="display:none;">
+            <span class="rsvp-selected-name" id="selectedName"></span>
+            <button type="button" class="rsvp-change-btn" id="changeGuestBtn">Change</button>
+          </div>
+
+          <div class="form-group" id="attendanceGroup" style="display:none;">
+            <label class="form-label">Will You Be Attending?</label>
             <div class="attendance-toggle">
               <input type="radio" name="attendance" id="rsvp-accept" value="Happily Accepting" checked />
               <label for="rsvp-accept">✓ &nbsp;Happily Accepting</label>
@@ -475,9 +480,16 @@
               <input type="radio" name="attendance" id="rsvp-decline" value="Regretfully Declining" />
               <label for="rsvp-decline">✗ &nbsp;Regretfully Declining</label>
             </div>
+            <p class="seats-note" id="seatsNote"></p>
           </div>
 
-          <button type="submit" class="btn-submit" id="submitBtn">
+          <div class="form-group" id="plusOneGroup" style="display:none;">
+            <label class="form-label" for="plusOneName">Bringing Someone With You? (Optional)</label>
+            <input class="form-input" type="text" id="plusOneName" name="plusOneName"
+              placeholder="Full name of your plus-one" />
+          </div>
+
+          <button type="submit" class="btn-submit" id="submitBtn" disabled>
             Send My RSVP &nbsp;→
           </button>
 
@@ -580,23 +592,144 @@
     tick();
     setInterval(tick, 1000);
 
-    /* ── RSVP Form → Google Sheets ───────────────────────────────── */
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbw1-nHELXPhsnQxPMG4juzHw1an5iWApyc97UE--6U1TPpV3K3owTfZyLtd_ukGILrC/exec';
+    /* ── RSVP: Guest Search + Submit → Google Sheets ─────────────── */
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcpvguvB_HZ4FupsI3I5UNpBNpwCQvEzG421XCCpAAGiHnJumMN6mFGBRY9UUOWpUa/exec';
 
-    document.getElementById('rsvpForm').addEventListener('submit', async function (e) {
-      e.preventDefault();
-      const submitBtn = document.getElementById('submitBtn');
-      const successMsg = document.getElementById('rsvpSuccess');
-      const errorMsg = document.getElementById('rsvpError');
+    const guestSearch = document.getElementById('guestSearch');
+    const guestResults = document.getElementById('guestResults');
+    const guestHint = document.getElementById('guestHint');
+    const rsvpSelected = document.getElementById('rsvpSelected');
+    const selectedNameEl = document.getElementById('selectedName');
+    const changeGuestBtn = document.getElementById('changeGuestBtn');
+    const attendanceGroup = document.getElementById('attendanceGroup');
+    const seatsNote = document.getElementById('seatsNote');
+    const plusOneGroup = document.getElementById('plusOneGroup');
+    const plusOneInput = document.getElementById('plusOneName');
+    const submitBtn = document.getElementById('submitBtn');
+    const rsvpForm = document.getElementById('rsvpForm');
+    const successMsg = document.getElementById('rsvpSuccess');
+    const errorMsg = document.getElementById('rsvpError');
 
-      const firstName = document.getElementById('firstName').value.trim();
-      const lastName = document.getElementById('lastName').value.trim();
-      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+    let guestList = [];
+    let selectedGuest = null;
 
-      if (!firstName || !lastName) {
-        alert('Please enter your first and last name.');
+    // Load the guest list so people can search for their name.
+    fetch(SCRIPT_URL + '?action=guestlist')
+      .then(res => res.json())
+      .then(data => {
+        if (data.status === 'ok' && Array.isArray(data.guests)) {
+          guestList = data.guests;
+        }
+      })
+      .catch(() => {
+        // If the list can't be loaded, the search box simply won't
+        // suggest matches — the page itself still works.
+      });
+
+    function renderResults(matches) {
+      guestResults.innerHTML = '';
+
+      if (matches.length === 0) {
+        guestResults.classList.remove('open');
         return;
       }
+
+      matches.slice(0, 8).forEach(guest => {
+        const item = document.createElement('div');
+        item.className = 'guest-result-item';
+        item.textContent = guest.name;
+        item.addEventListener('click', () => selectGuest(guest));
+        guestResults.appendChild(item);
+      });
+
+      guestResults.classList.add('open');
+    }
+
+    guestSearch.addEventListener('input', () => {
+      const query = guestSearch.value.trim().toLowerCase();
+      guestHint.style.display = 'none';
+
+      if (query.length < 2) {
+        guestResults.classList.remove('open');
+        return;
+      }
+
+      const matches = guestList.filter(g => g.name.toLowerCase().includes(query));
+
+      if (matches.length === 0) {
+        guestResults.classList.remove('open');
+        guestHint.textContent = "We couldn't find that name on our guest list. Try a different spelling, or reach out to us directly.";
+        guestHint.style.display = 'block';
+        return;
+      }
+
+      renderResults(matches);
+    });
+
+    document.addEventListener('click', (e) => {
+      if (!guestResults.contains(e.target) && e.target !== guestSearch) {
+        guestResults.classList.remove('open');
+      }
+    });
+
+    function selectGuest(guest) {
+      selectedGuest = guest;
+      guestResults.classList.remove('open');
+      guestHint.style.display = 'none';
+
+      guestSearch.closest('.form-group').style.display = 'none';
+
+      selectedNameEl.textContent = guest.name;
+      rsvpSelected.style.display = 'flex';
+
+      attendanceGroup.style.display = 'block';
+      updateSeatsNote();
+      togglePlusOne();
+
+      submitBtn.disabled = false;
+    }
+
+    changeGuestBtn.addEventListener('click', () => {
+      selectedGuest = null;
+      guestSearch.value = '';
+      guestSearch.closest('.form-group').style.display = 'flex';
+
+      rsvpSelected.style.display = 'none';
+      attendanceGroup.style.display = 'none';
+      plusOneGroup.style.display = 'none';
+      submitBtn.disabled = true;
+    });
+
+    function updateSeatsNote() {
+      const accepting = document.querySelector('input[name="attendance"]:checked').value === 'Happily Accepting';
+      seatsNote.textContent = accepting
+        ? '2 seats have been reserved for you at our celebration.'
+        : "We're sorry you can't make it — we'll miss you!";
+    }
+
+    function togglePlusOne() {
+      const accepting = document.querySelector('input[name="attendance"]:checked').value === 'Happily Accepting';
+      plusOneGroup.style.display = accepting ? 'block' : 'none';
+      if (!accepting) plusOneInput.value = '';
+    }
+
+    document.querySelectorAll('input[name="attendance"]').forEach(radio => {
+      radio.addEventListener('change', () => {
+        updateSeatsNote();
+        togglePlusOne();
+      });
+    });
+
+    rsvpForm.addEventListener('submit', async function (e) {
+      e.preventDefault();
+
+      if (!selectedGuest) {
+        alert('Please find and select your name first.');
+        return;
+      }
+
+      const attendance = document.querySelector('input[name="attendance"]:checked').value;
+      const plusOneName = plusOneInput.value.trim();
 
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
@@ -604,14 +737,14 @@
       errorMsg.style.display = 'none';
 
       const payload = new FormData();
-      payload.append('firstName', firstName);
-      payload.append('lastName', lastName);
+      payload.append('action', 'rsvp');
+      payload.append('guestName', selectedGuest.name);
       payload.append('attendance', attendance);
+      payload.append('plusOneName', plusOneName);
       payload.append('timestamp', new Date().toLocaleString('en-PH', { timeZone: 'Asia/Manila' }));
 
       try {
         await fetch(SCRIPT_URL, { method: 'POST', body: payload, mode: 'no-cors' });
-        this.reset();
         successMsg.classList.add('success');
         successMsg.style.display = 'block';
         submitBtn.textContent = '✓ RSVP Sent';
