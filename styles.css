@@ -1310,6 +1310,16 @@ footer span {
     border-color: #fff;
 }
 
+@media (max-width: 480px) {
+    .cursor-circle {
+        display: none;
+    }
+
+    .cursor-hover {
+        display: none;
+    }
+}
+
 /* ─────────────────────────────────────────────────────────────
    BANK TRANSFER / INSTAPAY QR MODAL
 ───────────────────────────────────────────────────────────── */
@@ -1338,7 +1348,7 @@ footer span {
     background: var(--white);
     border-radius: var(--radius);
     box-shadow: var(--shadow);
-    max-width: 380px;
+    max-width: 680px;
     width: 100%;
     padding: 40px 32px;
     text-align: center;
@@ -1379,7 +1389,6 @@ footer span {
 .qr-modal-image {
     width: 220px;
     max-width: 100%;
-    margin: 0 auto 20px;
     border: 1px solid var(--gold-lt);
     border-radius: var(--radius);
     padding: 10px;
@@ -1391,19 +1400,26 @@ footer span {
     border-radius: 2px;
 }
 
+.qrs {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+
 .qr-modal-name {
     font-family: "Cormorant Garamond", serif;
-    font-size: 1.2rem;
+    font-size: 1rem;
     font-weight: 600;
     color: var(--navy);
     letter-spacing: 0.04em;
-    margin-bottom: 14px;
+    margin-top: 14px;
 }
 
 .qr-modal-note {
     font-size: 0.82rem;
     color: var(--muted);
     line-height: 1.7;
+    margin-top: 25px;
     margin-bottom: 14px;
 }
 
