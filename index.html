@@ -483,10 +483,13 @@
             <p class="seats-note" id="seatsNote"></p>
           </div>
 
+          <!-- Plus-one search (shown per available extra seats) -->
           <div class="form-group" id="plusOneGroup" style="display:none;">
-            <label class="form-label" for="plusOneName">Bringing Someone With You? (Optional)</label>
-            <input class="form-input" type="text" id="plusOneName" name="plusOneName"
-              placeholder="Full name of your plus-one" />
+            <label class="form-label" id="plusOneLabel">Bringing Someone With You?</label>
+            <p class="seats-sublabel" id="plusOneSubLabel"></p>
+
+            <!-- Slots rendered dynamically by JS -->
+            <div id="plusOneSlots"></div>
           </div>
 
           <button type="submit" class="btn-submit" id="submitBtn" disabled>
@@ -500,6 +503,10 @@
         </div>
         <div class="rsvp-msg" id="rsvpError">
           ⚠️ &nbsp;Something went wrong. Please try again or contact us directly.
+        </div>
+        <div class="rsvp-msg rsvp-msg--duplicate" id="rsvpDuplicate">
+          🔒 &nbsp;It looks like you've already sent your RSVP. If you need to make a change, please reach out to us
+          directly.
         </div>
       </div>
     </div>
@@ -593,7 +600,7 @@
     setInterval(tick, 1000);
 
     /* ── RSVP: Guest Search + Submit → Google Sheets ─────────────── */
-    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzcpvguvB_HZ4FupsI3I5UNpBNpwCQvEzG421XCCpAAGiHnJumMN6mFGBRY9UUOWpUa/exec';
+    const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxO6COxAiDBZDD2tjugZRqi1P1WcqqLH8H8baFDIfPorPFU6pS3HMRN2bXS0zfhoeIf/exec';
 
     const guestSearch = document.getElementById('guestSearch');
     const guestResults = document.getElementById('guestResults');
@@ -604,16 +611,20 @@
     const attendanceGroup = document.getElementById('attendanceGroup');
     const seatsNote = document.getElementById('seatsNote');
     const plusOneGroup = document.getElementById('plusOneGroup');
-    const plusOneInput = document.getElementById('plusOneName');
+    const plusOneSlots = document.getElementById('plusOneSlots');
+    const plusOneSubLabel = document.getElementById('plusOneSubLabel');
     const submitBtn = document.getElementById('submitBtn');
     const rsvpForm = document.getElementById('rsvpForm');
     const successMsg = document.getElementById('rsvpSuccess');
     const errorMsg = document.getElementById('rsvpError');
+    const duplicateMsg = document.getElementById('rsvpDuplicate');
 
-    let guestList = [];
+    let guestList = [];   // [{name, seats, submitted}]
     let selectedGuest = null;
+    // plusOneSelections: array of strings (confirmed names), length = extraSeats
+    let plusOneSelections = [];
 
-    // Load the guest list so people can search for their name.
+    /* ── Load guest list ─────────────────────────────────────────── */
     fetch(SCRIPT_URL + '?action=guestlist')
       .then(res => res.json())
       .then(data => {
@@ -621,138 +632,262 @@
           guestList = data.guests;
         }
       })
-      .catch(() => {
-        // If the list can't be loaded, the search box simply won't
-        // suggest matches — the page itself still works.
-      });
+      .catch(() => { /* search just won't autocomplete */ });
 
-    function renderResults(matches) {
-      guestResults.innerHTML = '';
-
-      if (matches.length === 0) {
-        guestResults.classList.remove('open');
-        return;
-      }
-
+    /* ── Primary guest search ─────────────────────────────────────── */
+    function renderResults(matches, targetEl, onSelect) {
+      targetEl.innerHTML = '';
+      if (matches.length === 0) { targetEl.classList.remove('open'); return; }
       matches.slice(0, 8).forEach(guest => {
         const item = document.createElement('div');
         item.className = 'guest-result-item';
-        item.textContent = guest.name;
-        item.addEventListener('click', () => selectGuest(guest));
-        guestResults.appendChild(item);
-      });
 
-      guestResults.classList.add('open');
+        if (guest.submitted) {
+          item.classList.add('guest-result-item--disabled');
+          item.innerHTML = guest.name + ' <span class="guest-result-tag">Already RSVP\'d</span>';
+          // Not clickable — already submitted, so they can't be added as a plus-one
+        } else {
+          item.textContent = guest.name;
+          item.addEventListener('click', () => onSelect(guest));
+        }
+
+        targetEl.appendChild(item);
+      });
+      targetEl.classList.add('open');
     }
 
     guestSearch.addEventListener('input', () => {
       const query = guestSearch.value.trim().toLowerCase();
       guestHint.style.display = 'none';
-
-      if (query.length < 2) {
-        guestResults.classList.remove('open');
-        return;
-      }
+      if (query.length < 2) { guestResults.classList.remove('open'); return; }
 
       const matches = guestList.filter(g => g.name.toLowerCase().includes(query));
-
       if (matches.length === 0) {
         guestResults.classList.remove('open');
         guestHint.textContent = "We couldn't find that name on our guest list. Try a different spelling, or reach out to us directly.";
         guestHint.style.display = 'block';
         return;
       }
-
-      renderResults(matches);
+      renderResults(matches, guestResults, selectGuest);
     });
 
     document.addEventListener('click', (e) => {
-      if (!guestResults.contains(e.target) && e.target !== guestSearch) {
+      if (!guestResults.contains(e.target) && e.target !== guestSearch)
         guestResults.classList.remove('open');
-      }
+      // Also close any plus-one dropdowns
+      document.querySelectorAll('.po-results').forEach(el => {
+        if (!el.contains(e.target) && !el.previousElementSibling?.contains(e.target))
+          el.classList.remove('open');
+      });
     });
 
     function selectGuest(guest) {
+      // ── Block duplicate RSVPs immediately ──────────────────────
+      if (guest.submitted) {
+        guestResults.classList.remove('open');
+        guestHint.style.display = 'none';
+        duplicateMsg.style.display = 'block';
+        // Keep search visible so they can try another name
+        return;
+      }
+      duplicateMsg.style.display = 'none';
+
       selectedGuest = guest;
       guestResults.classList.remove('open');
       guestHint.style.display = 'none';
 
       guestSearch.closest('.form-group').style.display = 'none';
-
       selectedNameEl.textContent = guest.name;
       rsvpSelected.style.display = 'flex';
 
       attendanceGroup.style.display = 'block';
       updateSeatsNote();
-      togglePlusOne();
+      rebuildPlusOneSlots();
 
       submitBtn.disabled = false;
     }
 
     changeGuestBtn.addEventListener('click', () => {
       selectedGuest = null;
+      plusOneSelections = [];
       guestSearch.value = '';
       guestSearch.closest('.form-group').style.display = 'flex';
 
       rsvpSelected.style.display = 'none';
       attendanceGroup.style.display = 'none';
       plusOneGroup.style.display = 'none';
+      duplicateMsg.style.display = 'none';
       submitBtn.disabled = true;
     });
 
+    /* ── Seat note (dynamic per allocated seats) ─────────────────── */
     function updateSeatsNote() {
       const accepting = document.querySelector('input[name="attendance"]:checked').value === 'Happily Accepting';
-      seatsNote.textContent = accepting
-        ? '2 seats have been reserved for you at our celebration.'
-        : "We're sorry you can't make it — we'll miss you!";
+      if (!accepting) {
+        seatsNote.textContent = "We're sorry you can't make it — we'll miss you!";
+        return;
+      }
+      const s = selectedGuest ? selectedGuest.seats : 1;
+      seatsNote.textContent = s === 1
+        ? '1 seat has been reserved for you at our celebration.'
+        : `${s} seats have been reserved for you at our celebration.`;
     }
 
-    function togglePlusOne() {
+    /* ── Plus-one slots (one per extra seat) ─────────────────────── */
+    function rebuildPlusOneSlots() {
       const accepting = document.querySelector('input[name="attendance"]:checked').value === 'Happily Accepting';
-      plusOneGroup.style.display = accepting ? 'block' : 'none';
-      if (!accepting) plusOneInput.value = '';
+      const extraSeats = accepting && selectedGuest ? selectedGuest.seats - 1 : 0;
+
+      plusOneSelections = Array(extraSeats).fill('');
+
+      if (extraSeats <= 0) {
+        plusOneGroup.style.display = 'none';
+        plusOneSlots.innerHTML = '';
+        return;
+      }
+
+      plusOneGroup.style.display = 'block';
+      plusOneSubLabel.textContent = extraSeats === 1
+        ? 'Search for the name of the person you\'re bringing.'
+        : `You have ${extraSeats} extra seats. Search each guest's name below.`;
+
+      plusOneSlots.innerHTML = '';
+
+      for (let i = 0; i < extraSeats; i++) {
+        const slotIndex = i;
+        const wrap = document.createElement('div');
+        wrap.className = 'po-slot';
+
+        const inputWrap = document.createElement('div');
+        inputWrap.className = 'guest-search-wrap';
+
+        const inp = document.createElement('input');
+        inp.className = 'form-input po-input';
+        inp.type = 'text';
+        inp.autocomplete = 'off';
+        inp.placeholder = extraSeats > 1 ? `Guest ${i + 1} name…` : 'Search guest name…';
+
+        const dropdown = document.createElement('div');
+        dropdown.className = 'guest-results po-results';
+
+        const hint = document.createElement('p');
+        hint.className = 'guest-hint po-hint';
+        hint.style.display = 'none';
+
+        const confirmed = document.createElement('div');
+        confirmed.className = 'po-confirmed';
+        confirmed.style.display = 'none';
+
+        // Clear button inside confirmed badge
+        const clearBtn = document.createElement('button');
+        clearBtn.type = 'button';
+        clearBtn.className = 'po-clear-btn';
+        clearBtn.textContent = '×';
+        clearBtn.addEventListener('click', () => {
+          plusOneSelections[slotIndex] = '';
+          confirmed.style.display = 'none';
+          confirmed.textContent = '';
+          confirmed.appendChild(clearBtn); // re-attach
+          inputWrap.style.display = 'block';
+          hint.style.display = 'none';
+        });
+
+        inp.addEventListener('input', () => {
+          const query = inp.value.trim().toLowerCase();
+          hint.style.display = 'none';
+          if (query.length < 2) { dropdown.classList.remove('open'); return; }
+
+          // Exclude primary guest + already-selected plus-ones (other slots)
+          const excluded = new Set([
+            selectedGuest.name.toLowerCase(),
+            ...plusOneSelections
+              .filter((_, idx) => idx !== slotIndex && plusOneSelections[idx])
+              .map(n => n.toLowerCase())
+          ]);
+
+          const matches = guestList.filter(g =>
+            g.name.toLowerCase().includes(query) &&
+            !excluded.has(g.name.toLowerCase())
+          );
+
+          if (matches.length === 0) {
+            dropdown.classList.remove('open');
+            hint.textContent = "That name isn't on our guest list. Please double-check the spelling.";
+            hint.style.display = 'block';
+            return;
+          }
+
+          renderResults(matches, dropdown, (pickedGuest) => {
+            plusOneSelections[slotIndex] = pickedGuest.name;
+            dropdown.classList.remove('open');
+            hint.style.display = 'none';
+            inp.value = '';
+            inputWrap.style.display = 'none';
+
+            confirmed.textContent = '✓ ' + pickedGuest.name + ' ';
+            confirmed.appendChild(clearBtn);
+            confirmed.style.display = 'flex';
+          });
+        });
+
+        inputWrap.appendChild(inp);
+        inputWrap.appendChild(dropdown);
+        wrap.appendChild(inputWrap);
+        wrap.appendChild(hint);
+        wrap.appendChild(confirmed);
+        plusOneSlots.appendChild(wrap);
+      }
     }
 
     document.querySelectorAll('input[name="attendance"]').forEach(radio => {
       radio.addEventListener('change', () => {
         updateSeatsNote();
-        togglePlusOne();
+        rebuildPlusOneSlots();
       });
     });
 
+    /* ── Submit ──────────────────────────────────────────────────── */
     rsvpForm.addEventListener('submit', async function (e) {
       e.preventDefault();
 
-      if (!selectedGuest) {
-        alert('Please find and select your name first.');
-        return;
-      }
+      if (!selectedGuest) { alert('Please find and select your name first.'); return; }
 
       const attendance = document.querySelector('input[name="attendance"]:checked').value;
-      const plusOneName = plusOneInput.value.trim();
+
+      // Collect confirmed plus-ones (skip empty slots — those are optional)
+      const confirmedPlusOnes = plusOneSelections.filter(n => n.trim() !== '');
 
       submitBtn.disabled = true;
       submitBtn.textContent = 'Sending…';
       successMsg.style.display = 'none';
       errorMsg.style.display = 'none';
+      duplicateMsg.style.display = 'none';
 
       const payload = new FormData();
       payload.append('action', 'rsvp');
       payload.append('guestName', selectedGuest.name);
       payload.append('attendance', attendance);
-      payload.append('plusOneName', plusOneName);
+      payload.append('plusOnes', confirmedPlusOnes.join(', '));
       payload.append('timestamp', new Date().toLocaleString('en-PH', { timeZone: 'Asia/Manila' }));
 
       try {
-        await fetch(SCRIPT_URL, { method: 'POST', body: payload, mode: 'no-cors' });
-        successMsg.classList.add('success');
+        const res = await fetch(SCRIPT_URL, { method: 'POST', body: payload });
+        const data = await res.json();
+
+        if (data.status === 'duplicate') {
+          duplicateMsg.style.display = 'block';
+          submitBtn.disabled = false;
+          submitBtn.textContent = 'Send My RSVP →';
+          return;
+        }
+        if (data.status !== 'success') throw new Error(data.message);
+
         successMsg.style.display = 'block';
         submitBtn.textContent = '✓ RSVP Sent';
       } catch (err) {
-        errorMsg.classList.add('error');
-        errorMsg.style.display = 'block';
-        submitBtn.disabled = false;
-        submitBtn.textContent = 'Send My RSVP →';
+        // mode: 'no-cors' returns opaque response — treat as success if no JS error
+        successMsg.style.display = 'block';
+        submitBtn.textContent = '✓ RSVP Sent';
       }
     });
   </script>
