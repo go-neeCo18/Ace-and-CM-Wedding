@@ -1,15 +1,15 @@
 /* ─── CSS Variables ──────────────────────────────────────────── */
 :root {
-    --white: #FFFFFF;
-    --cream: #FAF7F4;
-    --gold: #C9A96E;
-    --gold-lt: #E8D5B0;
+    --white: #ffffff;
+    --cream: #faf7f4;
+    --gold: #c9a96e;
+    --gold-lt: #e8d5b0;
     --navy: #152851;
-    --burg: #6B1A2A;
-    --text: #2C2C2C;
-    --muted: #7A7A7A;
+    --burg: #6b1a2a;
+    --text: #2c2c2c;
+    --muted: #7a7a7a;
     --radius: 4px;
-    --shadow: 0 8px 40px rgba(26, 39, 68, .10);
+    --shadow: 0 8px 40px rgba(26, 39, 68, 0.1);
 }
 
 /* ─── Reset ──────────────────────────────────────────────────── */
@@ -27,7 +27,7 @@ html {
 }
 
 body {
-    font-family: 'Montserrat', sans-serif;
+    font-family: "Montserrat", sans-serif;
     background: var(--cream);
     color: var(--text);
     overflow-x: hidden;
@@ -44,11 +44,12 @@ a {
     cursor: none;
 }
 
-button, button:hover, label, label:hover{
+button,
+button:hover,
+label,
+label:hover {
     cursor: none;
 }
-
-
 
 /* ─── Utility ────────────────────────────────────────────────── */
 .section {
@@ -62,17 +63,17 @@ button, button:hover, label, label:hover{
 
 .tag {
     display: inline-block;
-    font-family: 'Montserrat', sans-serif;
-    font-size: .68rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: .2em;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 18px;
 }
 
 .section-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(2rem, 5vw, 2.8rem);
     font-weight: 300;
     color: var(--navy);
@@ -98,7 +99,7 @@ button, button:hover, label, label:hover{
 }
 
 .border-frame::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     border: 1px solid var(--gold-lt);
@@ -106,10 +107,10 @@ button, button:hover, label, label:hover{
 }
 
 .border-frame::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 6px;
-    border: 1px solid rgba(201, 169, 110, .3);
+    border: 1px solid rgba(201, 169, 110, 0.3);
     pointer-events: none;
 }
 
@@ -130,20 +131,24 @@ button, button:hover, label, label:hover{
 
 /* Decorative background pattern */
 #hero::before {
-    content: '';
+    content: "";
     position: absolute;
     inset: 0;
     background-image:
-        radial-gradient(ellipse 80% 60% at 50% 0%, rgba(107, 26, 42, .35) 0%, transparent 70%),
-        radial-gradient(ellipse 60% 40% at 50% 100%, rgba(107, 26, 42, .2) 0%, transparent 60%);
+        radial-gradient(ellipse 80% 60% at 50% 0%,
+            rgba(107, 26, 42, 0.35) 0%,
+            transparent 70%),
+        radial-gradient(ellipse 60% 40% at 50% 100%,
+            rgba(107, 26, 42, 0.2) 0%,
+            transparent 60%);
 }
 
 /* Corner ornaments */
 #hero::after {
-    content: '';
+    content: "";
     position: absolute;
     inset: 24px;
-    border: 1px solid rgba(201, 169, 110, .25);
+    border: 1px solid rgba(201, 169, 110, 0.25);
     pointer-events: none;
 }
 
@@ -151,12 +156,12 @@ button, button:hover, label, label:hover{
     position: relative;
     z-index: 1;
     max-width: 80vw;
-    animation: fadeUp .9s ease both;
+    animation: fadeUp 0.9s ease both;
 }
 
 .hero-pretitle {
-    font-size: .72rem;
-    letter-spacing: .28em;
+    font-size: 0.72rem;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
     color: var(--gold);
     margin-bottom: 28px;
@@ -164,20 +169,19 @@ button, button:hover, label, label:hover{
 }
 
 .hero-names {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1.2rem, 8vw, 5.5rem);
     font-weight: 300;
     color: var(--white);
     line-height: 1;
-    letter-spacing: -.05em;
-
+    letter-spacing: -0.05em;
 }
 
 .hero-names .ampersand {
     font-style: italic;
     color: var(--gold);
     display: block;
-    font-size: .55em;
+    font-size: 0.55em;
     line-height: 1.6;
 }
 
@@ -192,7 +196,7 @@ button, button:hover, label, label:hover{
 .hero-rule span {
     flex: 1;
     height: 1px;
-    background: rgba(201, 169, 110, .4);
+    background: rgba(201, 169, 110, 0.4);
 }
 
 .hero-rule i {
@@ -202,20 +206,20 @@ button, button:hover, label, label:hover{
 }
 
 .hero-matthew {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1rem, 1vw, 1.6rem);
     font-weight: 300;
-    color: rgba(255, 255, 255, .85);
-    letter-spacing: .06em;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.06em;
 }
 
 .hero-quote {
     width: 80vw;
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1rem, 1vw, 1.6rem);
     font-weight: 300;
-    color: rgba(255, 255, 255, .85);
-    letter-spacing: .06em;
+    color: rgba(255, 255, 255, 0.85);
+    letter-spacing: 0.06em;
     margin-bottom: 20px;
 }
 
@@ -225,18 +229,19 @@ button, button:hover, label, label:hover{
     padding: 14px 38px;
     border: 1px solid var(--gold);
     color: var(--gold);
-    font-size: .72rem;
-    letter-spacing: .2em;
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 600;
-    transition: background .25s, color .25s;
+    transition:
+        background 0.25s,
+        color 0.25s;
 }
 
 .hero-cta:hover {
     background: var(--gold);
     color: var(--navy);
 }
-
 
 /* ─────────────────────────────────────────────────────────────
        ATTIRE
@@ -256,11 +261,11 @@ button, button:hover, label, label:hover{
 }
 
 .attire-desc {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1rem, 2.5vw, 1.25rem);
     font-weight: 300;
     font-style: italic;
-    color: rgba(255, 255, 255, .75);
+    color: rgba(255, 255, 255, 0.75);
     max-width: 520px;
     margin: 0 auto 44px;
     line-height: 1.7;
@@ -285,8 +290,8 @@ button, button:hover, label, label:hover{
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, .25);
-    transition: transform .2s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.25);
+    transition: transform 0.2s;
 }
 
 .swatch:hover .swatch-circle {
@@ -294,20 +299,20 @@ button, button:hover, label, label:hover{
 }
 
 .swatch-name {
-    font-size: .65rem;
-    letter-spacing: .15em;
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 600;
-    color: rgba(255, 255, 255, .6);
+    color: rgba(255, 255, 255, 0.6);
 }
 
 .attire-note {
     margin-top: 36px;
     display: inline-block;
-    border: 1px solid rgba(201, 169, 110, .3);
+    border: 1px solid rgba(201, 169, 110, 0.3);
     padding: 14px 28px;
-    font-size: .75rem;
-    letter-spacing: .15em;
+    font-size: 0.75rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     color: var(--gold-lt);
     font-weight: 500;
@@ -358,8 +363,8 @@ button, button:hover, label, label:hover{
 
 .location-label {
     min-width: 140px;
-    font-size: .8rem;
-    letter-spacing: .2em;
+    font-size: 0.8rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     color: var(--gold);
     font-weight: 600;
@@ -367,7 +372,7 @@ button, button:hover, label, label:hover{
 }
 
 .location-value {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 2rem;
     color: var(--navy);
     font-weight: 500;
@@ -379,7 +384,7 @@ button, button:hover, label, label:hover{
 }
 
 .location-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 2rem;
     font-weight: 400;
     color: var(--navy);
@@ -387,7 +392,7 @@ button, button:hover, label, label:hover{
 }
 
 .location-address {
-    font-size: .82rem;
+    font-size: 0.82rem;
     color: var(--muted);
     line-height: 1.8;
 }
@@ -395,12 +400,12 @@ button, button:hover, label, label:hover{
 .location-time {
     display: inline-block;
     margin-top: 16px;
-    font-size: .7rem;
+    font-size: 0.7rem;
     font-weight: 600;
-    letter-spacing: .12em;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     color: var(--burg);
-    border: 1px solid rgba(107, 26, 42, .2);
+    border: 1px solid rgba(107, 26, 42, 0.2);
     padding: 6px 14px;
 }
 
@@ -423,7 +428,7 @@ button, button:hover, label, label:hover{
     min-height: 480px;
     display: block;
     border: 0;
-    filter: saturate(.85) contrast(1.05);
+    filter: saturate(0.85) contrast(1.05);
 }
 
 .map-directions-btn {
@@ -435,11 +440,11 @@ button, button:hover, label, label:hover{
     padding: 13px 32px;
     background: var(--navy);
     color: var(--white);
-    font-size: .72rem;
-    letter-spacing: .18em;
+    font-size: 0.72rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 600;
-    transition: background .2s;
+    transition: background 0.2s;
 }
 
 .map-directions-btn:hover {
@@ -449,7 +454,6 @@ button, button:hover, label, label:hover{
 /* MOBILE */
 
 @media (max-width: 900px) {
-
     .location-layout {
         grid-template-columns: 1fr;
         gap: 36px;
@@ -489,11 +493,11 @@ button, button:hover, label, label:hover{
 /* corner ornaments */
 .rsvp-card::before,
 .rsvp-card::after {
-    content: '✦';
+    content: "✦";
     position: absolute;
     font-size: 1rem;
     color: var(--gold);
-    opacity: .6;
+    opacity: 0.6;
 }
 
 .rsvp-card::before {
@@ -532,8 +536,8 @@ button, button:hover, label, label:hover{
 }
 
 .form-label {
-    font-size: .65rem;
-    letter-spacing: .18em;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 600;
     color: var(--navy);
@@ -543,20 +547,22 @@ button, button:hover, label, label:hover{
     width: 100%;
     margin-top: 6px;
     padding: 12px 16px;
-    border: 1px solid rgba(26, 39, 68, .2);
+    border: 1px solid rgba(26, 39, 68, 0.2);
     background: var(--white);
-    font-family: 'Montserrat', sans-serif;
-    font-size: .85rem;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.85rem;
     color: var(--text);
     outline: none;
-    transition: border-color .2s, box-shadow .2s;
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
     border-radius: var(--radius);
     -webkit-appearance: none;
 }
 
 .form-input:focus {
     border-color: var(--gold);
-    box-shadow: 0 0 0 3px rgba(201, 169, 110, .15);
+    box-shadow: 0 0 0 3px rgba(201, 169, 110, 0.15);
 }
 
 .form-input::placeholder {
@@ -576,9 +582,9 @@ button, button:hover, label, label:hover{
     right: 0;
     z-index: 20;
     background: var(--white);
-    border: 1px solid rgba(26, 39, 68, .15);
+    border: 1px solid rgba(26, 39, 68, 0.15);
     border-radius: var(--radius);
-    box-shadow: 0 10px 30px rgba(26, 39, 68, .12);
+    box-shadow: 0 10px 30px rgba(26, 39, 68, 0.12);
     overflow: hidden;
     max-height: 240px;
     overflow-y: auto;
@@ -590,11 +596,13 @@ button, button:hover, label, label:hover{
 
 .guest-result-item {
     padding: 12px 16px;
-    font-size: .85rem;
+    font-size: 0.85rem;
     color: var(--text);
     cursor: pointer;
-    transition: background .15s, color .15s;
-    border-bottom: 1px solid rgba(26, 39, 68, .06);
+    transition:
+        background 0.15s,
+        color 0.15s;
+    border-bottom: 1px solid rgba(26, 39, 68, 0.06);
 }
 
 .guest-result-item:last-child {
@@ -609,11 +617,11 @@ button, button:hover, label, label:hover{
 .guest-result-item--disabled {
     cursor: not-allowed;
     color: var(--muted);
-    background: rgba(26, 39, 68, .03);
+    background: rgba(26, 39, 68, 0.03);
 }
 
 .guest-result-item--disabled:hover {
-    background: rgba(26, 39, 68, .03);
+    background: rgba(26, 39, 68, 0.03);
     color: var(--muted);
 }
 
@@ -621,19 +629,19 @@ button, button:hover, label, label:hover{
     display: inline-block;
     margin-left: 8px;
     padding: 2px 8px;
-    font-size: .68rem;
+    font-size: 0.68rem;
     font-weight: 600;
-    letter-spacing: .04em;
+    letter-spacing: 0.04em;
     text-transform: uppercase;
     color: var(--burg);
-    background: rgba(107, 26, 42, .08);
+    background: rgba(107, 26, 42, 0.08);
     border-radius: 999px;
     vertical-align: middle;
 }
 
 .guest-hint {
     margin: 8px 0 0;
-    font-size: .78rem;
+    font-size: 0.78rem;
     line-height: 1.6;
     color: var(--burg);
 }
@@ -651,15 +659,15 @@ button, button:hover, label, label:hover{
 }
 
 .rsvp-selected-label {
-    font-size: .65rem;
-    letter-spacing: .18em;
+    font-size: 0.65rem;
+    letter-spacing: 0.18em;
     text-transform: uppercase;
     font-weight: 600;
     color: var(--muted);
 }
 
 .rsvp-selected-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: 1.1rem;
     font-weight: 600;
     color: var(--navy);
@@ -669,8 +677,8 @@ button, button:hover, label, label:hover{
 .rsvp-change-btn {
     background: none;
     border: none;
-    font-size: .68rem;
-    letter-spacing: .14em;
+    font-size: 0.68rem;
+    letter-spacing: 0.14em;
     text-transform: uppercase;
     font-weight: 600;
     color: var(--burg);
@@ -686,7 +694,7 @@ button, button:hover, label, label:hover{
 /* Seats note */
 .seats-note {
     margin: 10px 0 0;
-    font-size: .78rem;
+    font-size: 0.78rem;
     line-height: 1.6;
     color: var(--muted);
     text-align: center;
@@ -697,7 +705,7 @@ button, button:hover, label, label:hover{
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 0;
-    border: 1px solid rgba(26, 39, 68, .2);
+    border: 1px solid rgba(26, 39, 68, 0.2);
     border-radius: var(--radius);
     overflow: hidden;
     margin-top: 6px;
@@ -710,14 +718,16 @@ button, button:hover, label, label:hover{
 .attendance-toggle label {
     padding: 13px 10px;
     text-align: center;
-    font-size: .68rem;
-    letter-spacing: .12em;
+    font-size: 0.68rem;
+    letter-spacing: 0.12em;
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
     background: var(--white);
     color: var(--muted);
-    transition: background .2s, color .2s;
+    transition:
+        background 0.2s,
+        color 0.2s;
     user-select: none;
     line-height: 1.4;
 }
@@ -742,13 +752,15 @@ button, button:hover, label, label:hover{
     background: var(--navy);
     color: var(--white);
     border: none;
-    font-family: 'Montserrat', sans-serif;
-    font-size: .75rem;
-    letter-spacing: .22em;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.75rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     font-weight: 600;
     cursor: pointer;
-    transition: background .2s, transform .15s;
+    transition:
+        background 0.2s,
+        transform 0.15s;
     border-radius: var(--radius);
     margin-top: 6px;
 }
@@ -773,23 +785,23 @@ button, button:hover, label, label:hover{
     text-align: center;
     padding: 20px;
     border-radius: var(--radius);
-    font-size: .85rem;
+    font-size: 0.85rem;
     font-weight: 500;
     margin-top: 16px;
 }
 
 .rsvp-msg.success {
     display: block;
-    background: rgba(26, 39, 68, .07);
+    background: rgba(26, 39, 68, 0.07);
     color: var(--navy);
-    border: 1px solid rgba(26, 39, 68, .15);
+    border: 1px solid rgba(26, 39, 68, 0.15);
 }
 
 .rsvp-msg.error {
     display: block;
-    background: rgba(107, 26, 42, .07);
+    background: rgba(107, 26, 42, 0.07);
     color: var(--burg);
-    border: 1px solid rgba(107, 26, 42, .2);
+    border: 1px solid rgba(107, 26, 42, 0.2);
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -797,16 +809,16 @@ button, button:hover, label, label:hover{
     ───────────────────────────────────────────────────────────── */
 footer {
     background: var(--navy);
-    color: rgba(255, 255, 255, .4);
+    color: rgba(255, 255, 255, 0.4);
     text-align: center;
     padding: 36px 24px;
-    font-size: .7rem;
-    letter-spacing: .12em;
+    font-size: 0.7rem;
+    letter-spacing: 0.12em;
 }
 
 footer span {
     color: var(--gold);
-    opacity: .7;
+    opacity: 0.7;
 }
 
 /* ─────────────────────────────────────────────────────────────
@@ -827,7 +839,9 @@ footer span {
 .reveal {
     opacity: 0;
     transform: translateY(20px);
-    transition: opacity .65s ease, transform .65s ease;
+    transition:
+        opacity 0.65s ease,
+        transform 0.65s ease;
 }
 
 .reveal.visible {
@@ -864,20 +878,28 @@ footer span {
     align-items: center;
     gap: 8px;
     color: var(--white);
-    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, .45));
+    filter: drop-shadow(0 4px 16px rgba(0, 0, 0, 0.45));
 }
 
 .vinyl {
     width: 72px;
     height: 72px;
     border-radius: 50%;
-    background: radial-gradient(circle at 50%, #111 28%, #222 28%, #222 33%, #1a1a1a 33%, #1a1a1a 38%, #222 38%, #222 43%, #1a1a1a 43%);
-    border: 3px solid rgba(201, 169, 110, .6);
+    background: radial-gradient(circle at 50%,
+            #111 28%,
+            #222 28%,
+            #222 33%,
+            #1a1a1a 33%,
+            #1a1a1a 38%,
+            #222 38%,
+            #222 43%,
+            #1a1a1a 43%);
+    border: 3px solid rgba(201, 169, 110, 0.6);
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0 4px 20px rgba(0, 0, 0, .5);
-    transition: border-color .25s;
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+    transition: border-color 0.25s;
 }
 
 .vinyl.spinning {
@@ -902,17 +924,17 @@ footer span {
     display: flex;
     align-items: center;
     justify-content: center;
-    font-size: .6rem;
+    font-size: 0.6rem;
     color: #111;
     font-style: normal;
 }
 
 .music-label {
-    font-size: .6rem;
-    letter-spacing: .15em;
+    font-size: 0.6rem;
+    letter-spacing: 0.15em;
     text-transform: uppercase;
     font-weight: 600;
-    color: rgba(255, 255, 255, .7);
+    color: rgba(255, 255, 255, 0.7);
     text-align: center;
     line-height: 1.4;
 }
@@ -931,12 +953,12 @@ footer span {
 }
 
 .countdown-label {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1rem, 2.5vw, 1.4rem);
     font-weight: 300;
-    letter-spacing: .28em;
+    letter-spacing: 0.28em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .55);
+    color: rgba(255, 255, 255, 0.55);
     margin-bottom: 28px;
 }
 
@@ -955,29 +977,29 @@ footer span {
 }
 
 .countdown-num {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(2.8rem, 8vw, 5.5rem);
     font-weight: 300;
     color: var(--white);
     line-height: 1;
-    letter-spacing: .02em;
+    letter-spacing: 0.02em;
 }
 
 .countdown-sub {
-    font-size: .58rem;
-    letter-spacing: .22em;
+    font-size: 0.58rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
-    color: rgba(255, 255, 255, .4);
+    color: rgba(255, 255, 255, 0.4);
     font-weight: 600;
     margin-top: 10px;
 }
 
 .countdown-sep {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(2.8rem, 8vw, 5.5rem);
     font-weight: 300;
     color: var(--gold);
-    opacity: .6;
+    opacity: 0.6;
     line-height: 1;
     padding: 0 4px;
     margin-top: -4px;
@@ -998,7 +1020,7 @@ footer span {
 }
 
 .entourage-intro {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     font-weight: 300;
     font-style: italic;
@@ -1008,7 +1030,7 @@ footer span {
 }
 
 .entourage-sub {
-    font-size: .82rem;
+    font-size: 0.82rem;
     color: var(--muted);
     line-height: 1.8;
     margin-bottom: 0;
@@ -1025,11 +1047,11 @@ footer span {
 }
 
 .ent-section-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1.3rem, 3vw, 1.8rem);
     font-weight: 300;
     color: var(--navy);
-    letter-spacing: .06em;
+    letter-spacing: 0.06em;
     margin-bottom: 28px;
 }
 
@@ -1054,8 +1076,8 @@ footer span {
 }
 
 .ent-role {
-    font-size: .68rem;
-    letter-spacing: .2em;
+    font-size: 0.68rem;
+    letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 600;
     color: var(--gold);
@@ -1063,8 +1085,8 @@ footer span {
 }
 
 .ent-role-sub {
-    font-family: 'Cormorant Garamond', serif;
-    font-size: .95rem;
+    font-family: "Cormorant Garamond", serif;
+    font-size: 0.95rem;
     font-style: italic;
     color: var(--muted);
     margin-bottom: 8px;
@@ -1072,7 +1094,7 @@ footer span {
 }
 
 .ent-name {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1rem, 3vw, 1.2rem);
     font-weight: 400;
     color: var(--navy);
@@ -1113,7 +1135,7 @@ footer span {
 .attire-group {
     margin-top: 44px;
     padding: 36px 40px;
-    border: 1px solid rgba(201, 169, 110, .25);
+    border: 1px solid rgba(201, 169, 110, 0.25);
 }
 
 .attire-group-info {
@@ -1130,27 +1152,27 @@ footer span {
 }
 
 .attire-group-title {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1.2rem, 3vw, 1.6rem);
     font-weight: 400;
     color: var(--white);
-    letter-spacing: .08em;
+    letter-spacing: 0.08em;
     text-transform: uppercase;
     margin-bottom: 8px;
 }
 
 .attire-group-sub {
-    font-size: .72rem;
-    letter-spacing: .14em;
-    color: rgba(255, 255, 255, .65);
+    font-size: 0.72rem;
+    letter-spacing: 0.14em;
+    color: rgba(255, 255, 255, 0.65);
     margin-bottom: 4px;
 }
 
 .attire-group-note {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-style: italic;
-    font-size: .95rem;
-    color: rgba(255, 255, 255, .55);
+    font-size: 0.95rem;
+    color: rgba(255, 255, 255, 0.55);
     margin: 10px 0 4px;
 }
 
@@ -1172,7 +1194,7 @@ footer span {
 }
 
 .gift-text {
-    font-family: 'Cormorant Garamond', serif;
+    font-family: "Cormorant Garamond", serif;
     font-size: clamp(1rem, 2.5vw, 1.3rem);
     font-weight: 300;
     font-style: italic;
@@ -1186,11 +1208,13 @@ footer span {
     padding: 15px 44px;
     background: var(--navy);
     color: var(--white);
-    font-size: .72rem;
-    letter-spacing: .22em;
+    font-size: 0.72rem;
+    letter-spacing: 0.22em;
     text-transform: uppercase;
     font-weight: 600;
-    transition: background .2s, transform .15s;
+    transition:
+        background 0.2s,
+        transform 0.15s;
     border-radius: var(--radius);
 }
 
@@ -1201,7 +1225,7 @@ footer span {
 
 /* ─── Plus-one slot styles ────────────────────────────────────── */
 .seats-sublabel {
-    font-size: .78rem;
+    font-size: 0.78rem;
     color: var(--muted);
     margin-bottom: 10px;
     line-height: 1.6;
@@ -1218,11 +1242,11 @@ footer span {
     background: #edf5ed;
     border: 1px solid #a8d5a8;
     color: #2d6a2d;
-    font-size: .82rem;
+    font-size: 0.82rem;
     font-weight: 600;
     padding: 9px 14px;
     border-radius: var(--radius);
-    letter-spacing: .02em;
+    letter-spacing: 0.02em;
 }
 
 .po-clear-btn {
@@ -1234,8 +1258,8 @@ footer span {
     line-height: 1;
     padding: 0 2px;
     margin-left: auto;
-    opacity: .7;
-    transition: opacity .15s;
+    opacity: 0.7;
+    transition: opacity 0.15s;
 }
 
 .po-clear-btn:hover {
@@ -1243,7 +1267,7 @@ footer span {
 }
 
 .po-hint {
-    font-size: .78rem;
+    font-size: 0.78rem;
     color: var(--burg);
     margin-top: 5px;
     line-height: 1.5;
@@ -1258,31 +1282,144 @@ footer span {
 
 /* Small Dot */
 
-    /* Big Circle */
-    .cursor-circle{
-        width:20px;
-        height:20px;
-        border:2px solid #fff;
-        border-radius:50%;
-        position:fixed;
-        top:0;
-        left:0;
-        transform:translate(-50%, -50%);
-        pointer-events:none;
-        z-index:9998;
-        transition:
-            width 0.25s ease,
-            height 0.25s ease,
-            border-color 0.25s ease,
-            background 0.25s ease;
-        box-shadow: 0 0 10px rgba(0, 0, 0, 0.299);
+/* Big Circle */
+.cursor-circle {
+    width: 20px;
+    height: 20px;
+    border: 2px solid #fff;
+    border-radius: 50%;
+    position: fixed;
+    top: 0;
+    left: 0;
+    transform: translate(-50%, -50%);
+    pointer-events: none;
+    z-index: 9998;
+    transition:
+        width 0.25s ease,
+        height 0.25s ease,
+        border-color 0.25s ease,
+        background 0.25s ease;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.299);
+}
+
+/* Hover Effect */
+.cursor-hover {
+    width: 40px;
+    height: 40px;
+    background: rgba(255, 255, 255, 0.1);
+    border-color: #fff;
+}
+
+/* ─────────────────────────────────────────────────────────────
+   BANK TRANSFER / INSTAPAY QR MODAL
+───────────────────────────────────────────────────────────── */
+.qr-modal-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(21, 40, 81, 0.55);
+    backdrop-filter: blur(4px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 24px;
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.3s ease;
+    z-index: 1000;
+}
+
+.qr-modal-overlay.open {
+    opacity: 1;
+    visibility: visible;
+}
+
+.qr-modal {
+    position: relative;
+    background: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--shadow);
+    max-width: 380px;
+    width: 100%;
+    padding: 40px 32px;
+    text-align: center;
+    transform: translateY(24px) scale(0.97);
+    transition: transform 0.3s ease;
+}
+
+.qr-modal-overlay.open .qr-modal {
+    transform: translateY(0) scale(1);
+}
+
+.qr-modal-close {
+    position: absolute;
+    top: 14px;
+    right: 14px;
+    width: 32px;
+    height: 32px;
+    border: none;
+    background: transparent;
+    font-size: 1.5rem;
+    line-height: 1;
+    color: var(--muted);
+    transition: color 0.2s;
+}
+
+.qr-modal-close:hover {
+    color: var(--burg);
+}
+
+.qr-modal-title {
+    font-family: "Cormorant Garamond", serif;
+    font-size: clamp(1.5rem, 4vw, 1.9rem);
+    font-weight: 300;
+    color: var(--navy);
+    line-height: 1.2;
+}
+
+.qr-modal-image {
+    width: 220px;
+    max-width: 100%;
+    margin: 0 auto 20px;
+    border: 1px solid var(--gold-lt);
+    border-radius: var(--radius);
+    padding: 10px;
+    background: var(--white);
+}
+
+.qr-modal-image img {
+    width: 100%;
+    border-radius: 2px;
+}
+
+.qr-modal-name {
+    font-family: "Cormorant Garamond", serif;
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--navy);
+    letter-spacing: 0.04em;
+    margin-bottom: 14px;
+}
+
+.qr-modal-note {
+    font-size: 0.82rem;
+    color: var(--muted);
+    line-height: 1.7;
+    margin-bottom: 14px;
+}
+
+.qr-modal-thanks {
+    font-family: "Cormorant Garamond", serif;
+    font-style: italic;
+    font-size: 1rem;
+    color: var(--navy);
+}
+
+@media (max-width: 480px) {
+    .qr-modal {
+        padding: 32px 22px;
     }
 
-    /* Hover Effect */
-    .cursor-hover{
-        width:40px;
-        height:40px;
-        background:rgba(255,255,255,0.1);
-        border-color:#fff;
+    .qr-modal-image {
+        width: 180px;
     }
-    
+}
