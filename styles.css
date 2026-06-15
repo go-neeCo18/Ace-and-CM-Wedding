@@ -159,6 +159,14 @@ label:hover {
     animation: fadeUp 0.9s ease both;
 }
 
+.hero-monogram {
+    width: 60px;
+    height: auto;
+    margin: 0 auto 24px;
+    fill: var(--white);
+    filter: drop-shadow(0 4px 20px rgba(201, 169, 110, 0.4));
+}
+
 .hero-pretitle {
     font-size: 0.72rem;
     letter-spacing: 0.28em;
