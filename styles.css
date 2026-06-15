@@ -233,6 +233,7 @@ label:hover {
     letter-spacing: 0.2em;
     text-transform: uppercase;
     font-weight: 600;
+    filter: drop-shadow(0 4px 20px rgba(201, 169, 110, 0.4));
     transition:
         background 0.25s,
         color 0.25s;
@@ -240,6 +241,26 @@ label:hover {
 
 .hero-cta:hover {
     background: var(--gold);
+    color: var(--navy);
+}
+
+.hero-cta2 {
+    display: inline-block;
+    margin-top: 40px;
+    padding: 14px 38px;
+    border: 1px solid var(--white);
+    color: var(--white);
+    font-size: 0.72rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    font-weight: 600;
+    transition:
+        background 0.25s,
+        color 0.25s;
+}
+
+.hero-cta2:hover {
+    background: var(--white);
     color: var(--navy);
 }
 
